@@ -4,7 +4,7 @@ RUN mkdir -p .
 WORKDIR /usr/src/app
 
 COPY package.json .
-RUN npm install && npm cache clean --force
+RUN npm cache clean --force && npm install 
 COPY . .
 EXPOSE 7214
 ENV NODE_ENV beta
