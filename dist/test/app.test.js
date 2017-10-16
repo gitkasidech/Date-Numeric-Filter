@@ -888,7 +888,8 @@ test('checkcase singleNumber_Phone เบอร์', function () {
 
 test('checkcase betweenDateTime_Date เมื่อวานตอนเช้า', function () {
     var input = ["เมื่อวานตอนเช้า"];
-    var data = { "Date_Time": { "type": "between", "start": { "value": "Thu,05-10-2017 6:00", "unit": "dateTime" }, "end": { "value": "Thu,05-10-2017 11:00", "unit": "dateTime" } } };
+    var thisday = moment().date();
+    var data = { "Date_Time": { "type": "between", "start": { "value": moment().set('date', thisday - 1).format('ddd,DD-MM-YYYY') + " 6:00", "unit": "dateTime" }, "end": { "value": moment().set('date', thisday - 1).format('ddd,DD-MM-YYYY') + " 11:00", "unit": "dateTime" } } };
     expect((0, _stringify2.default)(main(input))).toBe((0, _stringify2.default)([data]));
 });
 

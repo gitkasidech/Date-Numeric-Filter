@@ -17,14 +17,15 @@ var _require = require('./app'),
     main = _require.main;
 
 var regular1 = exports.regular1 = function regular1(req, res) {
+    var newData = void 0,
+        data = void 0;
     var input = req.body.messageData;
     for (var n in regex) {
-        var _newData = input.match(regex[n]);
-        if (_newData != null) {
-            console.log(_newData);
-        }
+        newData = input.match(regex[n]);
+        if (newData) data = newData;
     }
-    var output = main(newData);
+    console.log(data);
+    var output = main(data);
     console.log((0, _stringify2.default)(output));
     res.json(output);
 };
